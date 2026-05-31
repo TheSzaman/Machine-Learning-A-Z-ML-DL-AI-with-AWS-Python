@@ -38,3 +38,8 @@
 * **Use Case:** Very powerful for high-dimensional datasets, but performs poorly on single-feature datasets.
 
 ---
+##  Section 9: Random Forest Regression
+* **Concept:** Ensemble Learning. It builds a "forest" of multiple Decision Trees rather than relying on just one.
+* **Process:** It picks a random subset of data points, builds a Decision Tree, and repeats this multiple times. For a new prediction, it calculates the average of the predictions from all the individual trees.
+* **Advantage:** Drastically reduces the overfitting that commonly occurs with single Decision Trees.
+* **Feature Scaling:** Not required, for the same reasons as a single Decision Tree.
