@@ -5,19 +5,22 @@ I am learning Machine Learning, AI, and Data Science by building models and expe
 
 ## ✅ Progress
 
-### Part 2 Regression 📚 (In Progress)
-- ✅ Simple Linear Regression
-- ✅ Multiple Linear Regression
-- ✅ Polynomial Regression
-- ✅ Support Vector Regression (SVR)
-- ✅ Decision Tree Regression
-- 🔄 Random Forest Regression
+### Part 1: Data Preprocessing
+* Handling Missing Data (Imputation strategies)
+* Categorical Data Encoding (Avoiding the Dummy Variable Trap)
+* Train-Test Data Splitting (Preventing Data Leakage)
+* Feature Scaling (Standardization vs. Normalization)
 
-### Part 1 Data Preprocessing ✅ (Completed)
-- ✅ Data preprocessing
-- ✅ Handling missing data
-- ✅ Encoding categorical data
-- ✅ Feature scaling
+### Part 2: Regression Models
+* **Simple & Multiple Linear Regression:** OLS method, P-value feature selection.
+* **Polynomial Regression:** Handling non-linear relationships and managing the Polynomial Degree to prevent overfitting.
+* **Support Vector Regression (SVR):** Implementing the $\epsilon$-insensitive tube and managing strict scaling requirements.
+* **Decision Tree & Random Forest Regression:** Tree-based conditional logic and ensemble learning (Bagging) to stabilize predictions.
+
+### Part 3: Model Evaluation
+* Regression performance metrics.
+* **The $R^2$ Trap:** Understanding why standard $R^2$ fails in multiple regression.
+* **Adjusted $R^2$:** Implementing mathematical penalties for noise variables to ensure robust feature selection.
 
 ### Upcoming Sections
 - [ ] Classification
