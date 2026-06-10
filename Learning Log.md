@@ -268,3 +268,16 @@ Solves the fatal flaw of standard $R^2$ by mathematically penalizing the model f
 * **Under the Hood:** As you add features ($p$ increases), the denominator $n - p - 1$ gets smaller. This drags the overall Adjusted $R^2$ score down unless the new feature significantly improves the model.
 
 > **MLOps Key Takeaway:** When building Multiple Linear Regression models, **always** use Adjusted $R^2$ to evaluate and compare models. It proves whether a new feature actually adds predictive power or just creates noise.
+
+### Evaluation Project: Combined Cycle Power Plant
+**Objective:** Applied the theoretical regression concepts to a real-world dataset to predict the electrical energy output of a power plant.
+
+**Data Architecture:**
+* **Features ($X$):** Four continuous environmental variables: Ambient Temperature (AT), Exhaust Vacuum (V), Ambient Pressure (AP), and Relative Humidity (RH) located in the first columns.
+* **Target ($y$):** Energy output located in the final column.
+
+**Model Evaluation & Selection Strategy:**
+* Processed the dataset through the entire regression arsenal (Multiple Linear, Polynomial, SVR, Decision Tree, Random Forest).
+* Strictly utilized **Adjusted $R^2$** as the primary evaluation metric to benchmark the models against each other. This ensured that every environmental feature (e.g., humidity vs. pressure) actively contributed to the predictive power and wasn't artificially inflating a standard $R^2$ score.
+* Validated the models on a strict Train/Test split to confirm inference capabilities on unseen environmental states.
+* The best was Random Forest Regresion with score 0.9651
