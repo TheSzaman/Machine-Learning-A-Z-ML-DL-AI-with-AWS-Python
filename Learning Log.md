@@ -281,3 +281,59 @@ Solves the fatal flaw of standard $R^2$ by mathematically penalizing the model f
 * Strictly utilized **Adjusted $R^2$** as the primary evaluation metric to benchmark the models against each other. This ensured that every environmental feature (e.g., humidity vs. pressure) actively contributed to the predictive power and wasn't artificially inflating a standard $R^2$ score.
 * Validated the models on a strict Train/Test split to confirm inference capabilities on unseen environmental states.
 * The best was Random Forest Regresion with score 0.9651
+
+# Machine Learning: Classification Models
+
+## Introduction: Classification vs. Regression
+
+* **Regression:** Answers the question *"How much?"*. It predicts a continuous value (e.g., CPU temperature will be 72.5°C).
+* **Classification:** Answers the question *"Which category?"*. It predicts a discrete label (e.g., Category `0` = Server OK, Category `1` = Hardware Failure).
+
+---
+
+# Part 4: Classification Models
+
+## Introduction: Classification vs. Regression
+
+* **Regression:** Answers the question *"How much?"*. It predicts a continuous value (e.g., CPU temperature will be 72.5°C).
+* **Classification:** Answers the question *"Which category?"*. It predicts a discrete label (e.g., Category `0` = Server OK, Category `1` = Hardware Failure).
+
+---
+
+## Section 1: Logistic Regression
+
+> **🚨 The Naming Trap (Recruitment Pitfall):**
+> Despite having the word "Regression" in its name, this is strictly a **classification model**. The name simply stems from the fact that its underlying mathematical engine is linear regression, which is then mathematically modified to assign categories.
+
+### 1. Concept & The Sigmoid Function
+
+
+
+* **The Problem with a Straight Line:** If we use standard linear regression ($y = b_0 + b_1x$) to categorize data (where `0` is OK and `1` is Failure), the straight line shoots into infinity. We would get absurd failure predictions like $3500$ or $-42$.
+* **The Solution (Sigmoid):** We take the raw output of the linear equation and "squash" it through the logistic function (the Sigmoid curve).
+* **The Math:**
+  $$p = \frac{1}{1 + e^{-y}}$$
+  *(where $y = b_0 + b_1x$)*
+* **The Result:** The regression output is brutally squashed into a strict mathematical range **between $0$ and $1$**.
+
+### 2. How it Predicts (The Decision Boundary)
+
+The Logistic Regression model does not directly output a hard decision (e.g., "Failure"). It outputs a **probability ($p$)**.
+If a CPU temperature of 85°C enters the model, the output might be $p = 0.88$ (meaning an 88% chance of failure).
+
+We apply a rigid **Decision Boundary** (threshold) to this probability, which defaults to $0.5$:
+* If $p \ge 0.5 \rightarrow$ Predict Class `1` (Failure)
+* If $p < 0.5 \rightarrow$ Predict Class `0` (OK)
+
+### 3. Engineering Reality (MLOps Focus)
+
+* **Scaling Required? YES.** In the `scikit-learn` library, the `LogisticRegression` class has **L2 Regularization** enabled by default (a mathematical penalty that prevents Overfitting). Regularization logic instantly breaks if the input features are not on the exact same scale. You must always use `StandardScaler`.
+* **Interpretability:** This is a highly favored model in enterprise environments because it is extremely easy to explain to management. You know exactly how confident the algorithm is (e.g., "The model is 92% confident that this specific component will fail within 24 hours").
+### 🎯 Hands-On Project: Social Network Ads (SUV Purchase Prediction)
+
+**Objective:** Build a binary classification engine to predict whether a customer will purchase a newly released SUV. The business goal is to optimize the marketing budget by targeting social media ads exclusively to users with a mathematically high probability of converting.
+
+**Data Architecture:**
+* **Features ($X$):** Two continuous demographic variables: `Age` and `Estimated Salary`. *(Crucial MLOps step: The `User ID` column was explicitly dropped from the feature matrix to prevent the model from assigning weights to random database identifiers).*
+* **Target ($y$):** A discrete binary category `Purchased` (`0` = Did not buy, `1` = Bought).
+
